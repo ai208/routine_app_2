@@ -14,19 +14,19 @@ class UserService:
     def user_login_info(self): #    すべてまとめる　repositoryの更新を一度に行う。
         user = self.current_user
         today = date.today()
-        if user.last_login != today: #今日でない場合のみ更新する
+        if user.last_login != today: #今日でない場合のみ更新する この条件分岐はAIに教えてもらった。
             self._update_streak(user,today)
             self._update_oldest_login(user)
             user.last_login = today
-            #repositoryの更新
+            #repositoryの更新 途中で更新するとおかしくなるので、最後に更新する。
             self.repository.update(user)
             self.repository.save()        
         
     def _update_streak(self,user,today):
         if user.last_login == today - timedelta(days =1): #一日差の時は更新する
             user.login_streak += 1
-        else:
+        else: #today の時は更新しないので大丈夫
             user.login_streak = 1
         self.longest_login_streak = max(self.longest_login_streak,user.login_streak)
     def _update_oldest_login(self,user):
-        self.oldest_login_date = min(self.oldest_login_date,user.login_date)
+        self.oldest_login_date = min(self.oldest_login_date,user.login_date) #早い方になる

@@ -1,7 +1,8 @@
 import unittest
 from datetime import date
 from models.user_model import UserModel
-
+# AIに教えてもらいながら記述した。
+# testを使ってエラーを見つけることができた。
 class TestUserModel(unittest.TestCase):
     def test_init_default_values(self):
         user = UserModel("alice")
@@ -11,7 +12,7 @@ class TestUserModel(unittest.TestCase):
         self.assertIsInstance(user.last_login,date)
     def test_init_with_arguments(self):
         user = UserModel("tom",last_login=date(2026,1,1))
-        # self.assertEqual(user.username,"tom")
+        # self.assertEqual(user.username,"tom") #さっき行ったから重複している。
         # self.assertIsInstance(user.id,str)
         # self.assertEqual(user.login_streak,1)
         self.assertEqual(user.last_login,date(2026,1,1))
@@ -53,7 +54,7 @@ class TestUserModel(unittest.TestCase):
         }
         user = UserModel.from_dict(data)
         self.assertEqual(user.last_login,date_now)
-        # self.assertIsNone(user.last_login)
+        # self.assertIsNone(user.last_login) #間違い
     def test_round_trip(self):
         user1 = UserModel("tom")
         data = user1.to_dict()

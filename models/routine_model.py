@@ -1,4 +1,4 @@
-# model データ構造の定義
+# model データ構造の定義 routien 6から　user_id が追加要素　構成がroutine_6と違う
 # 2
 from datetime import date
 class RoutineModel:

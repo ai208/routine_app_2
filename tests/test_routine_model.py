@@ -12,7 +12,7 @@ class TestRoutineModel(unittest.TestCase):
         self.assertEqual(routine.total_done,0)
         self.assertIsNone(routine.last_done)
 
-    def test_init_with_argument(self): #引数を取る時のテスト
+    def test_init_with_argument(self): #引数を取る時のテスト ここで引数を取ったら後は要らない。
         routine = RoutineModel("tom","123",id = "1234",done = True,total_done=3,last_done=date(2026,1,1))
         self.assertEqual(routine.done,True)
         self.assertEqual(routine.total_done,3)

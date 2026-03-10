@@ -10,7 +10,7 @@ class TestUserModel(unittest.TestCase):
         self.assertIsInstance(user.id,str)
         self.assertEqual(user.login_streak,1)
         self.assertIsInstance(user.last_login,date)
-    def test_init_with_arguments(self):
+    def test_init_with_arguments(self):# ここで引数を取ったから後は、引数のチェックは必要ない
         user = UserModel("tom",last_login=date(2026,1,1))
         # self.assertEqual(user.username,"tom") #さっき行ったから重複している。
         # self.assertIsInstance(user.id,str)
